@@ -2,7 +2,17 @@
 
 Command line tools for [AWS](https://aws.amazon.com/).
 
-## Create an instance from an image
+## Installation
+
+* Clone this repository: `git clone https://github.com/magician11/aws-tools.git`
+* Enter that directory: `cd aws-tools`
+* Install the packages: `yarn` or `npm install`
+
+## Command line tools
+
+The commands that can be run from the command line.
+
+### Create an instance from an image
 
 Launch an Instance from an AMI.
 
