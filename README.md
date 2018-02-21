@@ -114,3 +114,10 @@ Returns this object...
   "ReservationId": "r-0124c9e7453b7d951"
 }
 ```
+
+### Terminate an Instance
+
+You can find the Instance ID
+[here](https://console.aws.amazon.com/ec2/v2/home#Instances).
+
+`node terminate-instance.js [Instance ID]`
