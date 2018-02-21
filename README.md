@@ -117,7 +117,27 @@ Returns this object...
 
 ### Terminate an Instance
 
-You can find the Instance ID
-[here](https://console.aws.amazon.com/ec2/v2/home#Instances).
+To get the Instance ID
+[click here](https://console.aws.amazon.com/ec2/v2/home#Instances).
 
 `node terminate-instance.js [Instance ID]`
+
+Returns...
+
+```
+{
+  "TerminatingInstances": [
+    {
+      "CurrentState": {
+        "Code": 32,
+        "Name": "shutting-down"
+      },
+      "InstanceId": "i-0581658d868e6f6de",
+      "PreviousState": {
+        "Code": 16,
+        "Name": "running"
+      }
+    }
+  ]
+}
+```
