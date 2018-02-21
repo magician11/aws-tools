@@ -8,6 +8,23 @@ Command line tools for [AWS](https://aws.amazon.com/).
 * Enter that directory: `cd aws-tools`
 * Install the packages: `yarn` or `npm install`
 
+Then create a `config.json` file at the root of this directory with the
+following structure...
+
+```
+{
+  "accessKeyId": "your access key ID",
+  "secretAccessKey": "your secret access key",
+  "region": "us-east-1"
+}
+```
+
+To get your keys, setup a user
+[here](https://console.aws.amazon.com/iam/home#/users).
+
+You can find a list of all the region slugs
+[here](https://docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
+
 ## Command line tools
 
 The commands that can be run from the command line.
