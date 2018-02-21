@@ -158,3 +158,15 @@ Returns...
   ]
 }
 ```
+
+### Create then terminate an instance (then repeat)
+
+This is a helper command tool that creates an instance from an AMI, then keeps
+it alive for a user specified period of time in minutes, and then terminates
+that instance.
+
+The final parameter will repeat this "creation, wait and termination of an
+instance" after a user specified period of time in minutes.
+
+`node create-then-terminate-instance.js [AMI ID] [minutes to keep instance
+alive] [minutes before repeating]`
