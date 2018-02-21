@@ -7,26 +7,36 @@ const timeout = minutes => {
   return new Promise(resolve => setTimeout(resolve, minutesToMs(minutes)));
 };
 
-const createThenTerminateInstance = async (amiId, minsToKeepAlive) => {
-  const createResponse = await createInstance(process.argv[2]);
-  const newInstanceId = createResponse.Instances[0].InstanceId;
-  console.log(
-    `Created a new Instance with ID ${newInstanceId} from AMI with ID ${
-      amiId
-    } on ${new Date().toString()}`
-  );
-  await timeout(process.argv[3]);
-  const terminateResponse = await terminateInstance(newInstanceId);
-  console.log(`Instance with ID ${newInstanceId} set for termination.`);
-};
-
 (async () => {
   try {
     if (process.argv.length == 5) {
-      setInterval(
-        () => createThenTerminateInstance(process.argv[2], process.argv[3]),
-        minutesToMs(process.argv[4])
-      );
+      while (true) {
+        const amiId = process.argv[2];
+        const createResponse = await createInstance(amiId);
+        const newInstanceId = createResponse.Instances[0].InstanceId;
+        console.log(
+          `Created a new Instance with ID ${newInstanceId} from AMI with ID ${
+            amiId
+          } on ${new Date().toString()}`
+        );
+        const minsToKeepAlive = process.argv[3];
+        console.log(
+          `Keeping this Instance alive for ${minsToKeepAlive} minutes...`
+        );
+        await timeout(minsToKeepAlive);
+
+        const terminateResponse = await terminateInstance(newInstanceId);
+        console.log(
+          `Instance with ID ${
+            newInstanceId
+          } has been set for termination on ${new Date().toString()}`
+        );
+        const minutesToWait = process.argv[4];
+        console.log(
+          `Waiting ${minutesToWait} minutes before repeating this cycle.\n`
+        );
+        await timeout(minutesToWait);
+      }
     } else {
       console.log(
         'usage: node create-then-terminate-instance.js [AMI ID] [minutes to keep instance alive] [minutes before repeating]'
