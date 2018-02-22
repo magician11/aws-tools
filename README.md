@@ -170,3 +170,14 @@ instance" after a user specified period of time in minutes.
 
 `node create-then-terminate-instance.js [AMI ID] [minutes to keep instance
 alive] [minutes before repeating]`
+
+Output to the terminal will look something like this...
+
+```
+~/code/aws-tools(master) » node create-then-terminate-instance.js ami-f5a3b98f 8 120
+
+Created a new Instance with ID i-0786130ad946a02ff from AMI with ID ami-f5a3b98f on Thu Feb 22 2018 13:09:20 GMT+1300 (NZDT)
+Keeping this Instance alive for 8 minutes...
+Instance with ID i-0786130ad946a02ff has been set for termination on Thu Feb 22 2018 13:17:24 GMT+1300 (NZDT)
+Waiting 120 minutes before repeating this cycle.
+```
